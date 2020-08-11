@@ -5,7 +5,7 @@ import os
 import matplotlib.pyplot as plt
 import IPython.display
 
-sys.path.append(r"C:\Users\hikar\Documents\Module")
+sys.path.append(r"C:\Users\作業用\Documents\Module")
 from iowave import *
 from dB import *
 from spectrogram import *
@@ -14,16 +14,16 @@ frs = 44100 # [Hz]
 length = 3 # [s]
 Lref = 70 # [dB]
 samp_length = int(frs * length)
-output_dir = 'C:\\Users\\hikar\\Documents\\python\\test\\'
+output_dir = 'C:\\Users\\作業用\\Documents\\python\\'
 output_filename = 'white_noise_rseed.wav'
 output_file = output_dir + output_filename
 logfile_name = 'timelog.txt'
 
 # Get current time with class 'int'
 dt_now = datetime.datetime.now()
-dt_str = datetime.datetime.strftime(dt_now, '%Y/%m/%d %H:%M')
-time_str = dt_now.strftime('%H%M') # get current time (HHMM, class 'str')
-time_int = int(time_str) # current time (HHMM, class 'int')
+dt_str = datetime.datetime.strftime(dt_now, '%Y/%m/%d %H:%M:%S')
+time_str = dt_now.strftime('%H%M%S') # get current time (HHMMSS, class 'str')
+time_int = int(time_str) # current time (HHMMSS, class 'int')
 
 # Record and export logs of datetime
 #output_dir = 'C:\\Users\\hikar\\Documents\\python\\test\\'
