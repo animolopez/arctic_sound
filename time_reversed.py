@@ -12,8 +12,8 @@ input_file = r"C:\Users\作業用\Documents\九州大学\JAPANESE_44100\F01\NJ01
 output_file = r"C:\Users\作業用\Documents\python\NJ01F001_44100_reversed.wav"
 
 X = readGetWave(input_file)
-frs = X[0][2]
-print(frs)
+fs = X[0][2]
+print(fs)
 numsamp = X[0][3]
 print(numsamp)
 x = X[1]
@@ -21,14 +21,14 @@ print(x)
 Lx = Leq(x)
 print(Lx)
 print(np.max(np.abs(x)))
-length = np.float64(numsamp / frs)
-showSpectrogram(x,length,N=1024,frs=frs,Window='hamming')
+length = np.float64(numsamp / fs)
+showSpectrogram(x,length,N=1024,fs=fs,Window='hamming')
 
 x_rev = np.flipud(x)
 Lx_rev = Leq(x_rev)
 print(Lx_rev)
-showSpectrogram(x_rev,length,N=1024,frs=frs,Window='hamming')
+showSpectrogram(x_rev,length,N=1024,fs=fs,Window='hamming')
 
-IPython.display.Audio(x_rev, rate = frs)
+IPython.display.Audio(x_rev, rate = fs)
 
 writeWave(output_file, x_rev, params=(1, 2, 44100))

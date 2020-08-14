@@ -10,10 +10,10 @@ from iowave import *
 from dB import *
 from spectrogram import *
 
-frs = 44100 # [Hz]
+fs = 44100 # [Hz]
 length = 3 # [s]
 Lref = 70 # [dB]
-samp_length = int(frs * length)
+samp_length = int(fs * length)
 output_dir = 'C:\\Users\\作業用\\Documents\\python\\'
 output_filename = 'white_noise_rseed.wav'
 output_file = output_dir + output_filename
@@ -52,6 +52,6 @@ print(np.max(np.abs(y)))
 showSpectrogram(y,length,N=512,frange=20000,Window='hamming')
 showFFT(y)
 
-IPython.display.Audio(y, rate = frs)
+IPython.display.Audio(y, rate = fs)
 
-writeWave(output_file, y, params=(1, 2, frs))
+writeWave(output_file, y, params=(1, 2, fs))
