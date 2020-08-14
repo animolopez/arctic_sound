@@ -21,7 +21,6 @@ output_filename = 'NJ01F001_44100_nvs_%dbands.wav' % (cutoff.size - 1)
 
 # Get current time with class 'int'
 dt_now = datetime.datetime.now()
-dt_str = datetime.datetime.strftime(dt_now, '%Y/%m/%d %H:%M:%S')
 time_str = dt_now.strftime('%H%M%S') # get current time (HHMMSS, class 'str')
 time_int = int(time_str) # current time (HHMMSS, class 'int')
 
@@ -64,7 +63,7 @@ for l in np.arange(0,(cutoff.size-1),1):
     #showSpectrogram(band_noise)
     band_noise_pow = np.square(band_noise)
     #showSpectrogram(band_noise_pow)
-    band_noise_pow_ma = np.convolve(band_noise_pow, GaussWin(length=0.040,fs=fs), mode='same')
+    band_noise_pow_ma = np.convolve(band_noise_pow, GaussWin(length=0.010,fs=fs), mode='same')
     #showSpectrogram(band_noise_pow_ma)
     power_rate = band_speech_pow_ma / band_noise_pow_ma
     #showSpectrogram(power_rate)
@@ -75,7 +74,6 @@ for l in np.arange(0,(cutoff.size-1),1):
 
 Ly = Leq(y)
 y_cal = amplify((Lx - Ly), y)
-y_length = np.float64(y_cal.size / fs)
 showSpectrogram(y_cal,N=1024,fs=fs,Window='hamming')
 
 IPython.display.Audio(y_cal, rate = fs)
