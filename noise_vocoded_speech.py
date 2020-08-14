@@ -70,7 +70,7 @@ for l in np.arange(0,(cutoff.size-1),1):
     #showSpectrogram(power_rate)
     if l == 0:
         y = np.zeros(band_speech.size)
-    y += power_rate * band_noise
+    y += np.sqrt(power_rate) * band_noise
     showSpectrogram(y)
 
 Ly = Leq(y)
