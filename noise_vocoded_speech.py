@@ -45,10 +45,12 @@ x = X[1]
 Lx = Leq(x)
 showSpectrogram(x,N=1024,fs=fs,Window='hamming')
 
+# Genarate a white noise
 Wnoise = np.random.randn(numsamp)
 Wnoise_cal = amplify((Lx - Leq(Wnoise)), Wnoise)
 #y = np.zeros(numsamp)
 
+# Noise vocoding loop
 for l in np.arange(0,(cutoff.size-1),1):
     bandpass = scipy.signal.firwin(numtaps=1025, cutoff=[cutoff[l], cutoff[l+1]], fs=fs, pass_zero=False)
     band_speech = scipy.signal.fftconvolve(x, bandpass)
