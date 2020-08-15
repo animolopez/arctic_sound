@@ -32,7 +32,7 @@ showSpectrogram(x,N=1024,fs=fs,Window='hamming')
 for l in mos_segdur:
     for m in block:
         if (l * m) <= max_rand_segdur:
-            output_filename = 'NJ01F001_44100_ltsm_%dbands_%dms_%dms.wav' % ((cutoff.size - 1), l, (l * m))
+            output_filename = 'NJ01F001_44100_lt-fsm_%dbands_%dms_%dms.wav' % ((cutoff.size - 1), l, (l * m))
 
             # Get current time with class 'int'
             dt_now = datetime.datetime.now()
