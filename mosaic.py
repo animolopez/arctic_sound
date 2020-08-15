@@ -32,8 +32,8 @@ for n in segdur:
 
     # Get current time with class 'int'
     dt_now = datetime.datetime.now()
-    time_str = dt_now.strftime('%H%M%S') # get current time (HHMMSS, class 'str')
-    time_int = int(time_str) # current time (HHMMSS, class 'int')
+    time_str = dt_now.strftime('%S%f') # get current time (SSssssss, class 'str')
+    time_int = int(time_str) # current time (SSssssss, class 'int')
 
     # Record and export logs of datetime
     logfile_name = 'rseedlog.txt'
@@ -95,7 +95,7 @@ for n in segdur:
         if l == 0:
             y = np.zeros(band_speech.size)
         y += np.sqrt(power_rate) * band_noise
-        showSpectrogram(y)
+        #showSpectrogram(y)
 
     Ly = Leq(y)
     y_cal = amplify((Lx - Ly), y)

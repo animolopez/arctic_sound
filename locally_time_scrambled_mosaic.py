@@ -18,7 +18,7 @@ output_dir = 'C:\\Users\\作業用\\Documents\\python\\'
 cutoff = np.array([50, 570, 1600, 3400, 7000])
 #cutoff = np.array([50, 150, 250, 350, 450, 570, 700, 840, 1000, 1170, 1370, 1600, 1850, 2150, 2500, 2900, 3400, 4000, 4800, 5800, 7000])
 mos_segdur = [20,40,80,160,320] # Mosaic segment duration [ms] (segdur > 20 [ms])
-block = [2] # A number of mosaic segments in each randomize segment
+block = [2,3,4,6,8,16] # A number of mosaic segments in each randomize segment
 max_rand_segdur = 320 # A max randomize segment duration [ms]
 
 # Read an input file
@@ -36,8 +36,8 @@ for l in mos_segdur:
 
             # Get current time with class 'int'
             dt_now = datetime.datetime.now()
-            time_str = dt_now.strftime('%H%M%S') # get current time (HHMMSS, class 'str')
-            time_int = int(time_str) # current time (HHMMSS, class 'int')
+            time_str = dt_now.strftime('%S%f') # get current time (SSssssss, class 'str')
+            time_int = int(time_str) # current time (SSssssss, class 'int')
 
             # Record and export logs of datetime
             logfile_name = 'rseedlog.txt'
