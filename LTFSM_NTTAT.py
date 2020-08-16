@@ -27,8 +27,8 @@ cutoff = np.array([50, 150, 250, 350, 450, 570, 700, 840, 1000, 1170, 1370, 1600
 mos_segdur = [20,40,80,160,320] # Mosaic segment duration [ms] (segdur > 20 [ms])
 block = [2,3,4,6,8,16] # A number of mosaic segments in each randomize segment
 max_rand_segdur = 320 # A max randomize segment duration [ms]
-loop_times = 3
-silence = 0.32 # Margin added to the begininng and the end [s]
+loop_times = 3 # Repeat times
+silence = 0.32 # Margin added to the begininng and the end of whole samples [s]
 interval = 1 # Silent interval between the speech samples [s]
 
 for k in speech_array:
@@ -69,10 +69,10 @@ for k in speech_array:
 
                     if os.path.isfile(path) is True:
                         with open(path, mode='a') as log:
-                            log.write('\n%s loop%s, The random seed is: %s' % (output_filename, j, time_str))
+                            log.write('\n%s loop%s, The random seed is: %s' % (output_filename, j+1, time_str))
                     else:
                         with open(path, mode='w') as log:
-                            log.write('%s loop%s, The random seed is: %s' % (output_filename, j, time_str))
+                            log.write('%s loop%s, The random seed is: %s' % (output_filename, j+1, time_str))
 
                     np.random.seed(seed=time_int) # Fix np.random.seed by datetime
 
